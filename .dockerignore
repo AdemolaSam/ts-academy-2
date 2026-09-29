@@ -1,0 +1,10 @@
+.git
+.gitignore
+logs
+*.log
+*.tmp
+tmp
+grade.sh
+test.sh
+README.md
+compose.yaml
