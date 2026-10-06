@@ -67,22 +67,12 @@ else
 fail "Docker Compose configuration is invalid"
 cat /tmp/assignment2-compose.log
 fi
-# Student test suite
-if [[ -x ./test.sh ]]; then
-if ./test.sh >/tmp/assignment2-student-tests.log 2>&1; then
-pass "Student test.sh passes"
+# Local CLI smoke test (never invoke this script recursively)
+if bash app/diagnostic.sh help >/tmp/assignment2-student-tests.log 2>&1; then
+pass "Local diagnostic.sh help works"
 else
-fail "Student test.sh fails"
+fail "Local diagnostic.sh help failed"
 cat /tmp/assignment2-student-tests.log
-fi
-else
-echo "WARN: test.sh is not executable; running with bash"
-if bash ./test.sh >/tmp/assignment2-student-tests.log 2>&1; then
-pass "Student test.sh passes"
-else
-fail "Student test.sh fails"
-cat /tmp/assignment2-student-tests.log
-fi
 fi
 echo
 echo "======================================"

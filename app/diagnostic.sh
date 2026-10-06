@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# diagnostic <command> [args]
-# Exit codes: 0 success, 1 operational failure, 2 invalid command or input
 
 set -u
 
@@ -22,7 +20,7 @@ EOF
 }
 
 cmd_system() {
-    echo "===== System Information ====="
+    echo "================ System Information ========================"
     echo "Hostname : $(hostname)"
     echo "User     : $(whoami)"
     echo "Date     : $(date '+%Y-%m-%d %H:%M:%S %Z')"
