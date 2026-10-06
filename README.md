@@ -1,4 +1,4 @@
-#Dockerized Diagnostic CLI
+# Dockerized Diagnostic CLI
 
 A Bash diagnostic tool packaged as a Docker image.
 
