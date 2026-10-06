@@ -1,6 +1,6 @@
 FROM alpine:3.20
 
-# bash is not in Alpine by default; procps-ng provides free and uptime -p
+
 RUN apk add --no-cache bash procps-ng \
     && adduser -D -H appuser
 
