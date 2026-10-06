@@ -9,7 +9,7 @@ A Bash diagnostic tool packaged as a Docker image.
 ## Setup
 
 ```bash
-git clone <this-repo-url>
+git clone https://github.com/AdemolaSam/ts-academy-2
 cd assignment-2
 chmod +x grade.sh test.sh app/*.sh
 docker build -t diagnostic-tool .
