@@ -67,9 +67,11 @@ else
 fail "Docker Compose configuration is invalid"
 cat /tmp/assignment2-compose.log
 fi
-# Student test suite
-if [[ -x ./test.sh ]]; then
-if ./test.sh >/tmp/assignment2-student-tests.log 2>&1; then
+# Student test suite (guarded against nested test/grader runs)
+if [[ -n "${ASSIGNMENT2_NESTED_RUN:-}" ]]; then
+echo "SKIP: nested test run prevented (ASSIGNMENT2_NESTED_RUN set)"
+elif [[ -x ./test.sh ]]; then
+if ASSIGNMENT2_NESTED_RUN=1 ./test.sh >/tmp/assignment2-student-tests.log 2>&1; then
 pass "Student test.sh passes"
 else
 fail "Student test.sh fails"
@@ -77,7 +79,7 @@ cat /tmp/assignment2-student-tests.log
 fi
 else
 echo "WARN: test.sh is not executable; running with bash"
-if bash ./test.sh >/tmp/assignment2-student-tests.log 2>&1; then
+if ASSIGNMENT2_NESTED_RUN=1 bash ./test.sh >/tmp/assignment2-student-tests.log 2>&1; then
 pass "Student test.sh passes"
 else
 fail "Student test.sh fails"
